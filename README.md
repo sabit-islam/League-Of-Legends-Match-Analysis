@@ -79,7 +79,7 @@ Below is a box plot showing how each `position` differs in `creep score`
 <iframe
   src="assets/bivariate_graph.html"
   width="800"
-  height="500"
+  height="600"
   frameborder="0"
 ></iframe>
 
@@ -90,7 +90,7 @@ Below is another plot which shows the 10 most played `champion` and what `positi
 <iframe
   src="assets/champ_graph.html"
   width="800"
-  height="500"
+  height="600"
   frameborder="0"
 ></iframe>
 

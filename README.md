@@ -61,9 +61,31 @@ Below is a head of our clean_players dataframe.
 
 ### Univariate Analysis
 
+Below is a histogram representing the distribution of `assists` in our dataset. 
+
 <iframe
-  src="assets/univariate_graph.html"
+  src="assets/uni_graph.html"
   width="800"
   height="600"
   frameborder="0"
 ></iframe>
+
+This plot that the distribution of assists appears to be normal with a slight skew to the right, this can be confirmed by our knowledge of the game since we know that those in more support roles tend to have much higher assists than those in other positions. 
+
+### Bivariate Analysis 
+
+Below is a box plot showing how each `position` differs in `creep score`
+
+<iframe
+  src="assets/bivariate_graph.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+Here we can see some *pretty cool* trends in our data. We know that there is a high spawn rate of creeps in our bottom lane, and our plot validates this as we can see that those who farm in the bottom lane, or near it (mid-laners) have a generally higher creep score than the rest. We also notice that `junglers` and `support` have much lower scores, since they are not in the lanes where these usually spawn.
+
+
+### Interesting Aggregates
+
+

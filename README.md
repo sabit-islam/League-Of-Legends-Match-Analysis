@@ -67,10 +67,9 @@ Below is a histogram representing the distribution of `assists` in our dataset.
 <iframe
   src="assets/uni_graph.html"
   width="800"
-  height="500"
+  height="600"
   frameborder="0"
 ></iframe>
-
 This plot that the distribution of assists appears to be normal with a slight skew to the right, this can be confirmed by our knowledge of the game since we know that those in more support roles tend to have much higher assists than those in other positions. 
 
 ### Bivariate Analysis 

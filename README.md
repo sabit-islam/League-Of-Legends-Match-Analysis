@@ -52,12 +52,13 @@ Thankfully, for the dataset provided and the columns that we have chosen, the da
 
 Below is a head of our clean_players dataframe. 
 
-| | position | champion | kills | deaths | assists | wardsplaced | vspm | earned gpm | total cs | damagetochampions | 
-|0| top | Aatrox | 1 | 3 | 1 | 14 | 0.7635 | 221.4210 | 279.0 | 7092 | 
-|1| jng | Maokai | 0 | 4 | 3 | 10 | 1.2407 | 143.5737 | 153.0 | 7361 | 
-|2| mid | Orianna| 0 | 2 | 0 | 4 | 0.9862 | 210.6045 | 270.0 | 10005 | 
-|3| bot | Kalista| 2 | 4 | 0 | 22 | 1.3998 | 257,7200 | 311.0 | 10892 | 
-|4| sup | Senna | 0 | 3 | 3 | 47 | 3.5313 | 98.5578 | 30.0 | 6451 | 
+| position   | champion   |   kills |   deaths |   assists |   wardsplaced |   vspm |   earned gpm |   total cs |   damagetochampions |
+|:-----------|:-----------|--------:|---------:|----------:|--------------:|-------:|-------------:|-----------:|--------------------:|
+| top        | Aatrox     |       1 |        3 |         1 |            14 | 0.7635 |     221.421  |        279 |                7092 |
+| jng        | Maokai     |       0 |        4 |         3 |            10 | 1.2407 |     143.574  |        153 |                7361 |
+| mid        | Orianna    |       0 |        2 |         0 |             4 | 0.9862 |     210.605  |        270 |               10005 |
+| bot        | Kalista    |       2 |        4 |         0 |            22 | 1.3998 |     257.72   |        311 |               10892 |
+| sup        | Senna      |       0 |        3 |         3 |            47 | 3.5313 |      98.5578 |         30 |                6451 |
 
 ### Univariate Analysis
 
@@ -66,7 +67,7 @@ Below is a histogram representing the distribution of `assists` in our dataset.
 <iframe
   src="assets/uni_graph.html"
   width="800"
-  height="600"
+  height="500"
   frameborder="0"
 ></iframe>
 
@@ -79,7 +80,7 @@ Below is a box plot showing how each `position` differs in `creep score`
 <iframe
   src="assets/bivariate_graph.html"
   width="800"
-  height="600"
+  height="500"
   frameborder="0"
 ></iframe>
 
@@ -87,5 +88,33 @@ Here we can see some *pretty cool* trends in our data. We know that there is a h
 
 
 ### Interesting Aggregates
+
+Here is a table of aggregated mean data grouped by each position in our dataset: 
+
+| position   |   kills |   deaths |   assists |   wardsplaced |   vspm |   total cs |   earned gpm |
+|:-----------|--------:|---------:|----------:|--------------:|-------:|-----------:|-------------:|
+| bot        |    4.59 |     2.57 |      5.72 |         14.14 |   1.21 |     278.64 |       303.16 |
+| jng        |    2.77 |     3.17 |      7.96 |         11.15 |   1.41 |     187.99 |       218.62 |
+| mid        |    3.93 |     2.71 |      5.95 |         12.96 |   1.11 |     276.94 |       290.68 |
+| sup        |    0.92 |     3.63 |      9.86 |         54.66 |   3.28 |      42.88 |       126.03 |
+| top        |    2.87 |     3.04 |      5.19 |         11.66 |   0.96 |     246.45 |       256.6  |
+
+
+First, if we look in the `assists`, `total cs`, and `earned gpm` we can notice some strong connection between the top, mid, and bot positions. This makes sense because these 3 positions are more involved in the central aspects of the map as they try to gain control over the map. This means that they ultimately share similar objectives, causing there in-game statistics to build a sort of connection to each other. 
+
+We can also notice how dominant of a role the support plays in columns such as in the `assists` and `wardsplaced`. Support players while they might not be engaging in as much direct conflict are still one of the biggest contributors on the team. Helping the team to gain more map control, and their impact does not go unnoticed. 
+
+
+## Framing a Prediction Problem
+
+Based on all the information we have been able to gather so far about this dataset, we were able to notice trends about how different positions can have a correlation on certain in-game metrics that a player will attain. Would it be possible to accurately predict what role a player had on a team based on certain in-game statitistics? 
+
+By integrating a machine learning classification algorithm we can attempt to see how well these metrics servre to predict a players role during a match.This will be a multiclass classification which will take metrics known at the end of a match, and try to predict whether a player was designated to be a `top`,`bot`,`mid`,`jng`, or `sup`. Since we know every team has to assign each of these positions to a player, we can conclude that our dataset will be well balanced with each position making up exactly 20% of our dataset. Therefore, we can evaluate our model based on accuracy to see how well it is predicting. 
+
+
+## Baseline Model 
+
+
+
 
 

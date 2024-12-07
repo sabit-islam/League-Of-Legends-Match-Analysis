@@ -9,15 +9,15 @@ Authors: Sabit Islam, Anthony Brunswick
 ### What data is being used? 
 Our dataset comes from the game League of Legends, which is a widely popular multiplayer online battle arena video game made in 2009 by Riot Games with over 150 million active monthly players. This set is provided by Oracle's Elixer, which provides information from professional matches which took place in 2024.
 
-The dataset is filled with statistical match data for 9668 matches, and provides very thorough metrics for each team as well as each player. It includes in-game statistics, team performance, as well as player performance throughout the match.
+The dataset is filled with statistical match data for 9,668 matches, and provides very thorough metrics for each team as well as each player. It includes in-game statistics, team performance, as well as player performance throughout the match.
 
 During each match, every team has 5 players, and each player has a specific role that they play. These include **top lane**, **bot lane**, **mid lane**, **support**, and **jungler**. Each role has its own objectives, and they must cooperate well with each other to make sure their team is able to succeed.
 
-- `Top lane`: Primarily a solo lane where players build tanky or damage-focused champions.
+- `Top lane`: A solo lane where the objective is to secure a strong presence, and farm.
 
 - `Bot lane`: the ADC (Attack Damage Carry) where the primary objective is to farm and secure objectives.
 
-- `Mid lane`:  A solo lane that often focuses on damage-dealing champions.
+- `Mid lane`:  A solo lane that focuses on outplaying opponents, and taking control of key objectives.
 
 - `Jungler`: Moves around the map to secure neutral objectives and assist other lanes.
 

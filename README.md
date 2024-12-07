@@ -11,19 +11,19 @@ Our dataset comes from the game League of Legends, which is a widely popular mul
 
 The dataset is filled with statistical match data for 9,668 matches, and provides very thorough metrics for each team as well as each player. It includes in-game statistics, team performance, as well as player performance throughout the match.
 
-During each match, every team has 5 players, and each player has a specific role that they play. These include **top lane**, **bot lane**, **mid lane**, **support**, and **jungler**. Each role has its own objectives, and they must cooperate well with each other to make sure their team is able to succeed.
+During each match, both teams have 5 players with each player having a specific role that they play. These include **top lane**, **bot lane**, **mid lane**, **support**, and **jungler**. Each role has its own objectives, and they must cooperate well to ensure success.
 
-- `Top lane`: A solo lane where the objective is to secure a strong presence, and farm.
+- `Top lane`: A solo lane with the objective of farming, capture objectives, and building a presence. They often take a 'tank' role, focusing on taking damage for the team rather than getting kills.   
 
-- `Bot lane`: the ADC (Attack Damage Carry) where the primary objective is to farm and secure objectives.
+- `Bot lane`: The ADC (Attack Damage Carry) with the primary objective of farming and capturing objectives alongside the Support. Their distinguishing focus is collecting gold as they depend on buying items instead of leveling up; this is due to sharing XP with the Support.
 
-- `Mid lane`:  A solo lane that focuses on outplaying opponents, and taking control of key objectives.
+- `Mid lane`:  Another solo lane with the primary objective of farming and capturing objectives. They are similar to Bot lane, however not sharing XP means they are able to focus on leveling instead of collecting gold.
 
-- `Jungler`: Moves around the map to secure neutral objectives and assist other lanes.
+- `Jungler`: The only role without a dedicated lane; they travel across the map farming 'jungle objectives' and jumping between all three lanes to support their teammates.
 
-- `Support`:   Helps with vision control and assisting the Bottom-lane players in the bot lane.
+- `Support`:   Shares a lane alongslide Bot lane, their objective is to heal and mitigate enemy damage; while they do not directly kill, they are characterized by a high amount of assists. Additionally, they focus on building vision across the map using wards to find and track enemies.  
 
-A players performance in their role is crucial to the outcome of the success for their team. For our analysis our primary goal will be to analyze how the position that a player chooses is able to affect their overall performance in the game. What metrics are certain positions better at? Through our analysis we will set to answer these questions and look to see at what metrics are better served by certain positions. Ultimately creating a model which will help to build on team dynamics and individual performance by understanding how each role contributes to the team. 
+A player's ability to fulfill their specific role requirements is crucial; thus their statistics and role are intertwined. For our analysis, our primary goal will be analyzing how the position that a player chooses affects their overall performance in specific categories within the game. What metrics do certain positions excel at? Which metrics do certain positions not emphasize? Through our analysis we will set to answer these questions and look to see at what metrics are characterized by certain positions. Ultimate, we will create a model which will help to build on team dynamics and individual performance by understanding how each role contributes to the team. 
 
 ### What data is important? 
 The full dataset is complete with 116,016 rows, each row corresponding to either a player or a team for matches played in the 2024 season. While the dataset contains 161 columns of in-game statistics, team performance, and other fun metrics about the match. Our focus will remain on those columns which are relavent to the players performance for which position they chose to play. 
@@ -70,11 +70,11 @@ Below is a histogram representing the distribution of `assists` in our dataset.
   height="600"
   frameborder="0"
 ></iframe>
-This plot that the distribution of assists appears to be normal with a slight skew to the right, this can be confirmed by our knowledge of the game since we know that those in more support roles tend to have much higher assists than those in other positions. 
+The plot above shows a rather normal dataset which skews to the right. As we know one role specifically focuses on assists, support, a right skew makes perfect sense. Due to this skew, it is proven mathematically how the assists of supports distinguish themselves from other roles, placing them outside the normal distribution.
 
 ### Bivariate Analysis 
 
-Below is a box plot showing how each `position` differs in `creep score`
+Below is a box plot showing how each `position` differs in `creep score`.
 
 <iframe
   src="assets/bivariate_graph.html"

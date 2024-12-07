@@ -1,6 +1,6 @@
 # League of Legends Position Performace Analysis
 
-This project is meant to serve as an intensive data science project conducted at the University of Michigan. We will investigate through our data and begin with our question, learn to understand the dataset, create visualizations and helpful aggregates, frame a prediction problem, and then finally create our model. Our goal is to understand whether or not a players performance is significantly affected by the position they play. 
+This project is meant to serve as an extensive data science project conducted at the University of Michigan. We will investigate through our data and begin with our question, learn to understand the dataset, create visualizations and helpful aggregates, frame a prediction problem, and then finally create our model. Our goal is to understand whether or not a players performance is significantly affected by the position they play. 
 
 Authors: Sabit Islam, Anthony Brunswick 
 
@@ -86,6 +86,17 @@ Below is a box plot showing how each `position` differs in `creep score`
 Here we can see some *pretty cool* trends in our data. We know that there is a high spawn rate of creeps in our bottom lane, and our plot validates this as we can see that those who farm in the bottom lane, or near it (mid-laners) have a generally higher creep score than the rest. We also notice that `junglers` and `support` have much lower scores, since they are not in the lanes where these usually spawn.
 
 
+Below is another plot which shows the 10 most played `champion` and what `position` they were
+<iframe
+  src="assets/champ_graph.html"
+  width="800"
+  height="500"
+  frameborder="0"
+></iframe>
+
+***NEED TO WRITE THIS STILL ***
+
+
 ### Interesting Aggregates
 
 Here is a table of aggregated mean data grouped by each position in our dataset: 
@@ -112,8 +123,3 @@ By integrating a machine learning classification algorithm we can attempt to see
 
 
 ## Baseline Model 
-
-
-
-
-

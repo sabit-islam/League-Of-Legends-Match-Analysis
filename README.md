@@ -70,7 +70,8 @@ Below is a histogram representing the distribution of `assists` in our dataset.
   height="600"
   frameborder="0"
 ></iframe>
-The plot above shows a rather normal dataset which skews to the right. As we know one role specifically focuses on assists, support, a right skew makes perfect sense. Due to this skew, it is proven mathematically how the assists of supports distinguish themselves from other roles, placing them outside the normal distribution.
+
+The plot above shows a rather normal dataset which skews to the right. As we know one role specifically focuses on `assists`, `Support`, a right skew makes perfect sense. Due to this skew, it is proven mathematically how the `assists` of `Supports` distinguish themselves from other roles, placing them outside the normal distribution and allowing prediction.
 
 ### Bivariate Analysis 
 
@@ -83,7 +84,7 @@ Below is a box plot showing how each `position` differs in `creep score`.
   frameborder="0"
 ></iframe>
 
-Here we can see some *pretty cool* trends in our data. We know that there is a high spawn rate of creeps in our bottom lane, and our plot validates this as we can see that those who farm in the bottom lane, or near it (mid-laners) have a generally higher creep score than the rest. We also notice that `junglers` and `support` have much lower scores, since they are not in the lanes where these usually spawn.
+Here we can see some *pretty cool* trends in our data. While `Top`, `Mid`, and `Bot` lane all have equal spawn rate of creeps, we can see how different each lane prioritizes farming them. Heavily dependent upon getting gold and XP, both of which come from creeps, `Mid` and `Bot` lanes have higher median scores. While `Top` also farms creeps, their priority of becoming a tank lessens their creep score. `Jungler` farms a different kind of creep - jungle objectives - which are harder to kill, slower to spawn, and stationary, requiring the `Jungler` themself to move. This results in a the 2nd lowest median score comparitively. Lastly, `Support` is not intended to kill creeps, instead having their partner, `bot lane` farm, thus, we can characterize them by the lowest creep score. From these roles and differing objectives, we realize we can also use creep score to predict which role every player was.
 
 
 Below is another plot which shows the 10 most played `champion` and what `position` they were
@@ -94,7 +95,7 @@ Below is another plot which shows the 10 most played `champion` and what `positi
   frameborder="0"
 ></iframe>
 
-***NEED TO WRITE THIS STILL ***
+League of Legends does not bind certain champions to certain roles: any champion is allowed to be picked in any role desired. However, that is not to say certain champions are not more *efficient* in certain roles. This is known in part as the game's "meta", where certain champions are strategically played in only certain roles. For example, `Nautilus` has low damage output, yet can stun enemies; due to this, he is played nearly exlusively in the `Support` role. Across the 10 most played champions, this pattern of a standout role is seen in each one, creating a connection that can be used in prediction. 
 
 
 ### Interesting Aggregates
@@ -110,16 +111,20 @@ Here is a table of aggregated mean data grouped by each position in our dataset:
 | top        |    2.87 |     3.04 |      5.19 |         11.66 |   0.96 |     246.45 |       256.6  |
 
 
-First, if we look in the `assists`, `total cs`, and `earned gpm` we can notice some strong connection between the top, mid, and bot positions. This makes sense because these 3 positions are more involved in the central aspects of the map as they try to gain control over the map. This means that they ultimately share similar objectives, causing there in-game statistics to build a sort of connection to each other. 
+First, if we look in the `assists`, `total cs`, and `earned gpm` we notice strong similarites between the `Top`, `Mid`, and `Bot` lane positions and their means. As they share similar goals of farming creeps in their lane in order to collect gold, this is a logical similarity. Additionally, none focus on supporting another teammate secure a kill, like `Support` and `Jungler`, thus they share a lower mean `assists` as well.
 
-We can also notice how dominant of a role the support plays in columns such as in the `assists` and `wardsplaced`. Support players while they might not be engaging in as much direct conflict are still one of the biggest contributors on the team. Helping the team to gain more map control, and their impact does not go unnoticed. 
+We also notice how dominant of a role the `Support` plays in columns such as `assists` and `wardsplaced`. While `Support` does not show their contribution in `kills` or `total cs` as the other lanes might, we can see their standout contribution in their high means in `assists` and `wardsplaced`. Their role prioritizes helping their teammates win fights and giving vision and map knowledge through wards; again showing how role ultimately affects final player statistics. 
 
 
 ## Framing a Prediction Problem
 
-Based on all the information we have been able to gather so far about this dataset, we were able to notice trends about how different positions can have a correlation on certain in-game metrics that a player will attain. Would it be possible to accurately predict what role a player had on a team based on certain in-game statitistics? 
+Based on all the information we have been able to gather so far about this dataset, we were able to notice trends about how different positions have a correlation on certain in-game metrics that a player will attain. Would it then be possible to reverse this and accurately predict what role a player had on a team based on certain in-game statitistics? 
 
-By integrating a machine learning classification algorithm we can attempt to see how well these metrics servre to predict a players role during a match.This will be a multiclass classification which will take metrics known at the end of a match, and try to predict whether a player was designated to be a `top`,`bot`,`mid`,`jng`, or `sup`. Since we know every team has to assign each of these positions to a player, we can conclude that our dataset will be well balanced with each position making up exactly 20% of our dataset. Therefore, we can evaluate our model based on accuracy to see how well it is predicting. 
+By integrating a machine learning classification algorithm we can attempt to see how well these metrics servre to predict a players role during a match.This will be a multiclass classification which will take metrics known at the end of a match, and try to predict whether a player was designated to be a `Top`,`Bot`,`Mid`,`Jungler`, or `Support`. Since we know every team has to assign each of these positions to a player, we can conclude that our dataset will be well balanced with each position making up exactly 20% of our dataset. Therefore, we can evaluate our model based on accuracy to see how well it is predicting. 
 
 
 ## Baseline Model 
+
+For our baseline model, we chose to implement a RandomForestClassifier, making use of 3 of the columns in our cleaned dataset. `champion`, `kills`, and `assists`. Out of these columns 2 are quantitative (`kills`, `assists`), we chose not to transform these columns and leave them as is. Our third column happens to be nominal data (`champion`); since it is a nominal categorical, we chose to use a `OneHotEncoder` to handle it properly. This is done to convert our categorical data into a numerical format so that the model is able to learn from it. 
+
+After we made sure to split our training set into a training set and a validation set, we were able to train our model and then test its accuracy against unseen test data. Just with these 3 simple columns, and one simple encoding our model is able to predict with an accuracy of 90.29%! This means that for every 10 predictions it makes, it will only make one wrong decision. This accuracy might seem high, but in our final model after including other columns and some more transformations. We believe that our model will be able to predict with more accuracy.

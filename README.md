@@ -1,4 +1,4 @@
-# League of Legends Position Performace Analysis
+# League of Legends Position Performance Analysis
 
 This project is meant to serve as an extensive data science project conducted at the University of Michigan. We will investigate through our data and begin with our question, learn to understand the dataset, create visualizations and helpful aggregates, frame a prediction problem, and then finally create our model. Our goal is to understand whether or not a player's performance is significantly affected by the position they play. 
 

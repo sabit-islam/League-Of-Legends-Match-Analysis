@@ -125,6 +125,20 @@ By integrating a machine learning classification algorithm we can attempt to see
 
 ## Baseline Model 
 
-For our baseline model, we chose to implement a RandomForestClassifier, making use of 3 of the columns in our cleaned dataset. `champion`, `kills`, and `assists`. Out of these columns 2 are quantitative (`kills`, `assists`), we chose not to transform these columns and leave them as is. Our third column happens to be nominal data (`champion`); since it is a nominal categorical, we chose to use a `OneHotEncoder` to handle it properly. This is done to convert our categorical data into a numerical format so that the model is able to learn from it. 
+For our baseline model, we chose to implement a `RandomForestClassifier`, making use of 3 of the columns in our cleaned dataset. `champion`, `kills`, and `assists`. Out of these columns 2 are quantitative (`kills`, `assists`), we chose not to transform these columns and leave them as is. Our third column happens to be nominal data (`champion`); since it is a nominal categorical, we chose to use a `OneHotEncoder` to handle it properly. This is done to convert our categorical data into a numerical format so that the model is able to learn from it. This addition added about 160 columns into our dataframe. 
 
 After we made sure to split our training set into a training set and a validation set, we were able to train our model and then test its accuracy against unseen test data. Just with these 3 simple columns, and one simple encoding our model is able to predict with an accuracy of 90.29%! This means that for every 10 predictions it makes, it will only make one wrong decision. This accuracy might seem high, but in our final model after including other columns and some more transformations. We believe that our model will be able to predict with more accuracy.
+
+## Final Model 
+In our final model, it remained as a `RandomForestClassifier` and included the columns in our dataset which showed a significant distribution amongst each position which was played. These are all quantitative columns which include: `earned gpm`, `vspm`,`wardsplaced`,`total cs`. The significance of these columns is represented earlier in our analysis. We chose to add a `StandardScalar` to two of these columns (`wardsplaced`, `total cs`) as each game they came from were completed in different lengths, by adding this transformer we are able to standardize these columns to make sure each game is represented fairly. Due to complications throughout our process, and the size of our dataset with all the columns added with our `OneHotEncode` there were some issues with finding the best hyperparameters to integrate into our `RandomForestClassifier` to see how we could improve our `n_estimators` or our `max_depth`. So instead of being able to run them concurrently and check as many points as we could (We tried to let it run for hours, with no success), our best option was to pick and choose static points and move in the direction of our data. It was noticed that the numbers would just keep getting larger with there ultimately being no noticable improvement on our model. It ultimately would suggest to keep our parameters as the dedfault.
+
+While our model was unable to improve significantly, we were able to get our model to predict with about 94.27% accuracy which is about a 4% increase from our baseline model. The primary prediction problem that arises is the similarity between the lane positions (`bot`,`top`,`mid`). Represented in our Confusion Matrix shown below it can be seen that the majority of our prediction mistakes took place between these 3 columns. However, this difference is not enough to deem our model unsuccessful. 
+<iframe
+  src="assets/confusion.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+Ultimately, throughout this entire data analysis we were able to start with a question and live through the Data Science Lifecycle and end up with a properly functioning model that is able to take a players in game statistics and predict the role that they played throughout the match.
+
+Thank you for joining us on this exploration!
